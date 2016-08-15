@@ -28,3 +28,25 @@
   border-radius: 1px;
   margin: 10px 15px 0 0;
 }
+
+/*
+Transitions
+*/
+.query_in {
+  left: 0px;
+  position: absolute;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+}
+
+.query_out {
+  left: -300px;
+  position: absolute;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+
+}

@@ -1,0 +1,26 @@
+.panel {
+  height: 100%;
+  width: 300px;
+  position: absolute;
+  background-color: white;
+}
+
+/*
+Transitions
+*/
+
+.panel_in {
+  left: 0px;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+}
+
+.panel_out {
+  left: -300px;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+}

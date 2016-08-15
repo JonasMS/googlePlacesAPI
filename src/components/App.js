@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import QueryBox from './QueryBox';
-import { SEARCH, RESULT } from '../constants';
+import Panel from './Panel';
+import {
+  SEARCH,
+  RESULTS,
+  PANEL_IN,
+  PANEL_OUT,
+  QUERY_IN,
+  QUERY_OUT,
+} from '../constants';
 import { addMarker, removeMarkers } from '../modules/mapsAPI';
 import '../styles/App.css';
 
@@ -66,7 +74,10 @@ class App extends Component {
             collection.push(addMarker(this, result));
             return collection;
           }, []);
-          this.setState({markers});
+          this.setState({
+            markers,
+            display: RESULTS,
+          });
           return markers;
         }
         console.log(status);
@@ -85,9 +96,16 @@ class App extends Component {
         <div className="mapContainer">
           <div className="map"></div>
         </div>
-        <QueryBox
+        <div className={this.state.display === SEARCH ? QUERY_IN : QUERY_OUT }>
+          <QueryBox
+            updateSearch={this.updateSearch}
+            handleSearch={this.handleSearch}
+          />
+        </div>
+        <Panel
           updateSearch={this.updateSearch}
           handleSearch={this.handleSearch}
+          display={this.state.display}
         />
       </div>
     );
