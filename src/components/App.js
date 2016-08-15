@@ -17,11 +17,13 @@ class App extends Component {
 
     this.searchNearby = this.searchNearby.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.searchInput;
+    this.updateSearch = this.updateSearch.bind(this);
+    this.searchInput = null;
   }
 
   componentDidMount() {
-    console.log(this.searchNearby);
+    this.searchInput = document.querySelector('.searchInput');
+
     // init map
     const map = new google.maps.Map(document.querySelector('.map'), {
       center: this.state.location,
@@ -30,11 +32,14 @@ class App extends Component {
     });
 
     // init autocomplete
-    const input = document.querySelector('.searchInput');
-    const autocomplete = new google.maps.places.Autocomplete(input);
+    const autocomplete = new google.maps.places.Autocomplete(this.searchInput);
     autocomplete.bindTo('bounds', map);
 
-    this.searchInput = document.querySelector('input');
+    // update state on autocomplete feature
+    google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
+      this.setState({search: this.searchInput.value});
+    });
+
     this.setState({map: map});
   }
 
@@ -47,7 +52,7 @@ class App extends Component {
     this.searchNearby({
       location: this.state.location,
       radius: 500,
-      name: this.searchInput.value,
+      name: this.state.search,
       },
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -58,6 +63,12 @@ class App extends Component {
     });
   }
 
+  updateSearch(e) {
+    const search = e.target.value;
+    this.setState({search: search});
+    console.log(search);
+  }
+
   render() {
     return (
       <div className="App">
@@ -65,6 +76,7 @@ class App extends Component {
           <div className="map"></div>
         </div>
         <QueryBox
+          updateSearch={this.updateSearch}
           handleSearch={this.handleSearch}
         />
       </div>
