@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QueryBox from './QueryBox';
 import { SEARCH, RESULT } from '../constants';
-import { addMarker } from '../modules/mapsAPI';
+import { addMarker, removeMarkers } from '../modules/mapsAPI';
 import '../styles/App.css';
 
 class App extends Component {
@@ -50,6 +50,10 @@ class App extends Component {
   }
 
   handleSearch() {
+    // remove markers
+    removeMarkers(this);
+    // execute search
+    // place a marker for each search result
     this.searchNearby({
       location: this.state.location,
       radius: 500,
@@ -58,21 +62,21 @@ class App extends Component {
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           console.log('results: ', results);
-          let marker;
-          return results.reduce((markers, result) => {
-            marker = addMarker(this, result);
-            markers.push(marker);
-            return markers;
+          const markers = results.reduce((collection, result) => {
+            collection.push(addMarker(this, result));
+            return collection;
           }, []);
+          this.setState({markers});
+          return markers;
         }
         console.log(status);
+        return;
     });
   }
 
   updateSearch(e) {
     const search = e.target.value;
     this.setState({search: search});
-    console.log(search);
   }
 
   render() {

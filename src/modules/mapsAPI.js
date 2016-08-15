@@ -6,3 +6,10 @@ export const addMarker = (context, place) => {
   });
   return marker;
 };
+
+export const removeMarkers = (context) => {
+  context.state.markers.forEach(marker => {
+    marker.setMap(null);
+  });
+  context.setState({markers: []});
+};
