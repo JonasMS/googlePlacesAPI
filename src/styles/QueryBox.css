@@ -1,0 +1,30 @@
+.queryBoxContainer {
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  margin: 5px
+}
+
+.searchInput {
+  height: 20px;
+  width: 90%;
+  border-top: none;
+  border-bottom: 1px solid #4885ed;
+  border-left: none;
+  border-right: none;
+  margin: 10px auto;
+  display: block;
+}
+
+.search-btn {
+  display: block;
+  float: right;
+  height: 30px;
+  width: 60px;
+  background-color: #4885ed;
+  border: 1px solid #4885ed;
+  border-radius: 1px;
+  margin: 10px 15px 0 0;
+}

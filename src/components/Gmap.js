@@ -15,9 +15,13 @@ const Gmap = (props) => {
         }
         googleMapElement={
           <GoogleMap
-            ref={(map) => console.log(map)}
-            defaultZoom={3}
-            defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+            ref={(map) => {
+              console.log(map);
+              console.log('getMap: ', props.getMap);
+              props.getMap(map);
+            }}
+            defaultZoom={16}
+            defaultCenter={{ lat: 37.785441, lng: -122.397595 }}
           >
             {props.markers.map((marker, index) => {
               return (
