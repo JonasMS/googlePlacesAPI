@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QueryBox from './QueryBox';
 import { SEARCH, RESULT } from '../constants';
+import { addMarker } from '../modules/mapsAPI';
 import '../styles/App.css';
 
 class App extends Component {
@@ -35,7 +36,7 @@ class App extends Component {
     const autocomplete = new google.maps.places.Autocomplete(this.searchInput);
     autocomplete.bindTo('bounds', map);
 
-    // update state on autocomplete feature
+    // update state on autocomplete invocation
     google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
       this.setState({search: this.searchInput.value});
     });
@@ -57,7 +58,12 @@ class App extends Component {
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           console.log('results: ', results);
-          return;
+          let marker;
+          return results.reduce((markers, result) => {
+            marker = addMarker(this, result);
+            markers.push(marker);
+            return markers;
+          }, []);
         }
         console.log(status);
     });
