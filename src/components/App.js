@@ -16,7 +16,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      search: null,
+      search: '',
       location: { lat: 37.785441, lng: -122.397595 },
       markers: [],
       display: SEARCH,
@@ -27,6 +27,7 @@ class App extends Component {
     this.searchNearby = this.searchNearby.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
+    this.closePanel = this.closePanel.bind(this);
     this.queryInput = null;
     this.panelInput = null;
   }
@@ -62,32 +63,34 @@ class App extends Component {
   }
 
   handleSearch() {
-    // match panelInput to queryInput
-    this.panelInput.value = this.state.search;
-    this.setState({display: RESULTS});
-    removeMarkers(this);
+    if (this.state.search.length) {
+      // match panelInput to queryInput
+      this.panelInput.value = this.state.search;
+      this.setState({display: RESULTS});
+      removeMarkers(this);
 
-    // execute search
-    // place a marker for each search result
-    this.searchNearby({
-      location: this.state.location,
-      radius: 500,
-      name: this.state.search,
-      },
-      (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          console.log('results: ', results);
-          const markers = results.reduce((collection, result) => {
-            collection.push(addMarker(this, result));
-            return collection;
-          }, []);
+      // execute search
+      // place a marker for each search result
+      this.searchNearby({
+        location: this.state.location,
+        radius: 500,
+        name: this.state.search,
+        },
+        (results, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log('results: ', results);
+            const markers = results.reduce((collection, result) => {
+              collection.push(addMarker(this, result));
+              return collection;
+            }, []);
 
-          this.setState({markers});
-          return markers;
-        }
-        console.log(status);
-        return;
-    });
+            this.setState({markers: results});
+            return markers;
+          }
+          console.log(status);
+          return;
+      });
+    }
   }
 
   updateSearch(e) {
@@ -95,7 +98,17 @@ class App extends Component {
     this.setState({search: search});
   }
 
+  closePanel() {
+    this.setState({
+      search: '',
+      display: SEARCH,
+    });
+    this.queryInput.value = '';
+    removeMarkers(this);
+  }
+
   render() {
+    console.log('state: ', this.state);
     return (
       <div className="App">
         <div className="mapContainer">
@@ -110,7 +123,8 @@ class App extends Component {
         <Panel
           updateSearch={this.updateSearch}
           handleSearch={this.handleSearch}
-          display={this.state.display}
+          closePanel={this.closePanel}
+          state={this.state}
         />
       </div>
     );

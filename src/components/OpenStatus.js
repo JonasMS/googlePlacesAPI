@@ -1,6 +1,6 @@
 import React from 'react';
 
-export OpenStatus = ({status}) => {
+const OpenStatus = ({status}) => {
   return status ? ( <p className="openStatus open">Open</p> ) :
     ( <p className="openStatus closed">Closed</p> );
 };

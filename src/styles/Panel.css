@@ -1,8 +1,15 @@
 .panel {
+  top: 0;
   height: 100%;
-  width: 300px;
+  width: 350px;
   position: absolute;
   background-color: white;
+  z-index: 300;
+}
+
+.closeIcon {
+  margin: 5px 0 0 5px;
+  color: grey;
 }
 
 /*
@@ -18,7 +25,7 @@ Transitions
 }
 
 .panel_out {
-  left: -300px;
+  left: -350px;
   -webkit-transition-property: left;
   -webkit-transition-duration: 1s;
   transition-property: left;
