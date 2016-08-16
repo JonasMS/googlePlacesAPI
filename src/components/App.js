@@ -27,11 +27,13 @@ class App extends Component {
     this.searchNearby = this.searchNearby.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
-    this.searchInput = null;
+    this.queryInput = null;
+    this.panelInput = null;
   }
 
   componentDidMount() {
-    this.searchInput = document.querySelector('.searchInput');
+    this.queryInput = document.querySelector('.query_in input');
+    this.panelInput = document.querySelector('.panel_out input');
 
     // init map
     const map = new google.maps.Map(document.querySelector('.map'), {
@@ -41,12 +43,14 @@ class App extends Component {
     });
 
     // init autocomplete
-    const autocomplete = new google.maps.places.Autocomplete(this.searchInput);
-    autocomplete.bindTo('bounds', map);
+    [this.queryInput, this.panelInput].forEach(input => {
+      let autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.bindTo('bounds', map);
 
-    // update state on autocomplete invocation
-    google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
-      this.setState({search: this.searchInput.value});
+      // update state on autocomplete invocation
+      google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
+        this.setState({search: input.value});
+      });
     });
 
     this.setState({map: map});
@@ -58,8 +62,11 @@ class App extends Component {
   }
 
   handleSearch() {
-    // remove markers
+    // match panelInput to queryInput
+    this.panelInput.value = this.state.search;
+    this.setState({display: RESULTS});
     removeMarkers(this);
+
     // execute search
     // place a marker for each search result
     this.searchNearby({
@@ -74,10 +81,8 @@ class App extends Component {
             collection.push(addMarker(this, result));
             return collection;
           }, []);
-          this.setState({
-            markers,
-            display: RESULTS,
-          });
+
+          this.setState({markers});
           return markers;
         }
         console.log(status);
