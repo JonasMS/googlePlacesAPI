@@ -1,0 +1,33 @@
+.secondaryResult {
+  height: 100px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.slideoutContainer {
+  width: 100%;
+  height: 100px;
+  background-color: white;
+}
+
+.slideoutContainer:hover {
+  left: 20px;
+  position: absolute;
+  box-shadow: 0 1px 2px #aaa;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+}
+
+.secondaryDetails {
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.thumbnailContainer {
+  width: 75px;
+  height: 100%;
+  overflow: hidden;
+  display: inline-block;
+}

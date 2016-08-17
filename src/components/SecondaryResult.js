@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/SecondaryResult.css';
 
 // thumbnail img on left
 // name
@@ -7,10 +8,17 @@ import React from 'react';
 
 const SecondaryResult = ({place}) => (
   <div className="secondaryResult">
-    <img src={place.photos[0].getUrl({maxWidth: 50})} className="thumbnail" alt="result" />
-    <div className="secondaryDetails">
-      <div>{place.name}</div>
-      <div>{place.vicinity}</div>
+    <div className="slideoutContainer">
+
+      <div className="thumbnailContainer">
+        <img src={place.photos[0].getUrl({maxHeight: 100})} className="thumbnailImg" alt="result" />
+      </div>
+
+      <div className="secondaryDetails">
+        <div>{place.name}</div>
+        <div>{place.vicinity}</div>
+      </div>
+
     </div>
   </div>
 );
