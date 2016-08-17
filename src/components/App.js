@@ -4,8 +4,6 @@ import Panel from './Panel';
 import {
   SEARCH,
   RESULTS,
-  PANEL_IN,
-  PANEL_OUT,
   QUERY_IN,
   QUERY_OUT,
 } from '../constants';

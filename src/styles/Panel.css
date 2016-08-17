@@ -1,7 +1,7 @@
 .panel {
   top: 0;
   height: 100%;
-  width: 350px;
+  width: 400px;
   position: absolute;
   background-color: white;
   z-index: 300;
@@ -25,7 +25,7 @@ Transitions
 }
 
 .panel_out {
-  left: -350px;
+  left: -400px;
   -webkit-transition-property: left;
   -webkit-transition-duration: 1s;
   transition-property: left;
