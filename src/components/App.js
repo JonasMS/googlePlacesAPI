@@ -26,7 +26,6 @@ class App extends Component {
 
     this.searchNearby = this.searchNearby.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSecondaryClick = this.handleSecondaryClick.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.closePanel = this.closePanel.bind(this);
     this.queryInput = null;
@@ -81,9 +80,12 @@ class App extends Component {
         (results, status) => {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             console.log('results: ', results);
-            const markers = results.map(result => addMarker(this, result));
-            panToPlace(this, results[0]);
-            this.setState({markers, places: results});
+            const places = results.map(result => ({
+                          marker: addMarker(this, result),
+                          info: result,
+                      }));
+            panToPlace(this, places[0].info);
+            this.setState({places});
             return;
           }
           console.log(status);
@@ -92,15 +94,9 @@ class App extends Component {
     }
   }
 
-  handleSecondaryClick(idx){
-    const { places } = this.state;
-    panToPlace(this, places[idx]);
-    this.setState({places: focusSelected(places, idx)});
-  }
-
   updateSearch(e) {
     const search = e.target.value;
-    this.setState({search: search});
+    this.setState({search});
   }
 
   closePanel() {

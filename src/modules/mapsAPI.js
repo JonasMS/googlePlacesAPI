@@ -1,21 +1,29 @@
-export const addMarker = (context, place) => {
+import { handleMarkerClick } from './eventHandlers';
+
+// Maps API Handlers
+
+export const addMarker = (app, place) => {
   const { location } = place.geometry;
   const marker = new google.maps.Marker({
-    map: context.state.map,
+    map: app.state.map,
     animation: google.maps.Animation.DROP,
     position: location,
   });
+  marker.addListener('click', () => handleMarkerClick(app, marker));
   return marker;
 };
 
-export const removeMarkers = (context) => {
-  context.state.markers.forEach(marker => {
+export const removeMarkers = (app) => {
+  app.state.markers.forEach(marker => {
     marker.setMap(null);
   });
-  context.setState({markers: [], places:[]});
+  app.setState({markers: [], places:[]});
 };
 
-export const panToPlace = (context, place) => {
+export const panToPlace = (app, place) => {
   const { location } = place.geometry;
-  context.state.map.panTo({lat: location.lat(), lng: location.lng()});
+  app.state.map.panTo({lat: location.lat(), lng: location.lng()});
 };
+
+
+

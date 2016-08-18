@@ -5,10 +5,10 @@ import SecondaryResult from './SecondaryResult';
 import { RESULTS, PANEL_IN, PANEL_OUT } from '../constants';
 import '../styles/Panel.css';
 
-const createSecondaries = (results, handleSecondaryClick) => (
+const createSecondaries = (context, results) => (
   results.map((place, key) => <SecondaryResult
       place={place}
-      handleSecondaryClick={handleSecondaryClick}
+      context={context}
       key={key}
       idx={key}
     />
@@ -23,7 +23,10 @@ const Panel = ({updateSearch, handleSearch, closePanel, context, state}) => (
     />
     <div className="results">
       {state.places.length && <PrimaryResult place={state.places[0]} />}
-      {state.places.length > 1 && createSecondaries(state.places.slice(1, 5), context.handleSecondaryClick)}
+      {
+        state.places.length > 1 &&
+        createSecondaries(context, state.places.slice(1, 5))
+      }
     </div>
   </div>
 );
