@@ -8,6 +8,7 @@ import {
   QUERY_OUT,
 } from '../constants';
 import { addMarker, removeMarkers } from '../modules/mapsAPI';
+import { focusSelected } from '../modules/utils';
 import '../styles/App.css';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
       search: '',
       location: { lat: 37.785441, lng: -122.397595 },
       markers: [],
+      places: [],
       display: SEARCH,
       bounds: null,
       map: null,
@@ -24,6 +26,7 @@ class App extends Component {
 
     this.searchNearby = this.searchNearby.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSecondaryClick = this.handleSecondaryClick.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.closePanel = this.closePanel.bind(this);
     this.queryInput = null;
@@ -60,7 +63,8 @@ class App extends Component {
     service.nearbySearch(options, callback);
   }
 
-  handleSearch() {
+  handleSearch(name = this.state.search) {
+    console.log(name);
     if (this.state.search.length) {
       // match panelInput to queryInput
       this.panelInput.value = this.state.search;
@@ -70,25 +74,25 @@ class App extends Component {
       // execute search
       // place a marker for each search result
       this.searchNearby({
+        name,
         location: this.state.location,
         radius: 500,
-        name: this.state.search,
         },
         (results, status) => {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             console.log('results: ', results);
-            const markers = results.reduce((collection, result) => {
-              collection.push(addMarker(this, result));
-              return collection;
-            }, []);
-
-            this.setState({markers: results});
-            return markers;
+            const markers = results.map(result => addMarker(this, result));
+            this.setState({markers, places: results});
+            return;
           }
           console.log(status);
-          return;
+          throw new Error(status); // TODO: verify that is correct
       });
     }
+  }
+
+  handleSecondaryClick(idx){
+    this.setState({places: focusSelected(this.state.places, idx)});
   }
 
   updateSearch(e) {
@@ -122,6 +126,7 @@ class App extends Component {
           updateSearch={this.updateSearch}
           handleSearch={this.handleSearch}
           closePanel={this.closePanel}
+          context={this}
           state={this.state}
         />
       </div>

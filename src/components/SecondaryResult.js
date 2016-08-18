@@ -6,9 +6,12 @@ import '../styles/SecondaryResult.css';
 // address
 // isOpen?
 
-const SecondaryResult = ({place}) => (
+const SecondaryResult = ({place, handleSecondaryClick, idx}) => (
   <div className="secondaryResult">
-    <div className="slideoutContainer">
+    <div
+      className="slideoutContainer"
+      onClick={() => handleSecondaryClick(idx + 1) }
+    >
 
       <div className="thumbnailContainer">
         <img src={place.photos[0].getUrl({maxHeight: 100})} className="thumbnailImg" alt="result" />
