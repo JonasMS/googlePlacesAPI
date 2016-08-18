@@ -117,7 +117,7 @@ class App extends Component {
         <div className={this.state.display === SEARCH ? QUERY_IN : QUERY_OUT }>
           <QueryBox
             updateSearch={this.updateSearch}
-            handleSearch={this.handleSearch}
+            app={this}
           />
         </div>
         <Panel

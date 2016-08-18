@@ -19,7 +19,7 @@ const Panel = ({updateSearch, handleSearch, closePanel, context, state}) => (
   <div className={`panel ${(state.display === RESULTS) ? PANEL_IN : PANEL_OUT}`} >
     <QueryBox
       updateSearch={updateSearch}
-      handleSearch={handleSearch}
+      app={context}
     />
     <div className="results">
       {state.places.length && <PrimaryResult place={state.places[0]} />}
