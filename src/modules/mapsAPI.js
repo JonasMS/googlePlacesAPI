@@ -14,3 +14,8 @@ export const removeMarkers = (context) => {
   });
   context.setState({markers: [], places:[]});
 };
+
+export const panToPlace = (context, place) => {
+  const { location } = place.geometry;
+  context.state.map.panTo({lat: location.lat(), lng: location.lng()});
+};

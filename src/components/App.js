@@ -7,7 +7,7 @@ import {
   QUERY_IN,
   QUERY_OUT,
 } from '../constants';
-import { addMarker, removeMarkers } from '../modules/mapsAPI';
+import { addMarker, removeMarkers, panToPlace } from '../modules/mapsAPI';
 import { focusSelected } from '../modules/utils';
 import '../styles/App.css';
 
@@ -82,6 +82,7 @@ class App extends Component {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             console.log('results: ', results);
             const markers = results.map(result => addMarker(this, result));
+            panToPlace(this, results[0]);
             this.setState({markers, places: results});
             return;
           }
@@ -92,7 +93,9 @@ class App extends Component {
   }
 
   handleSecondaryClick(idx){
-    this.setState({places: focusSelected(this.state.places, idx)});
+    const { places } = this.state;
+    panToPlace(this, places[idx]);
+    this.setState({places: focusSelected(places, idx)});
   }
 
   updateSearch(e) {
