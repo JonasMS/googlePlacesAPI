@@ -12,10 +12,11 @@ const SecondaryResult = ({app, place, idx}) => (
       <div className="thumbnailContainer">
         <img src={place.info.photos[0].getUrl({maxHeight: 100})} className="thumbnailImg" alt="result" />
       </div>
-
-      <div className="secondaryDetails">
-        <div>{place.info.name}</div>
-        <div>{place.info.vicinity}</div>
+      <div className="secondary-details-container">
+        <div className="secondaryDetails">
+          <div className="place-name">{place.info.name}</div>
+          <div className="place-address">{place.info.vicinity}</div>
+        </div>
       </div>
 
     </div>

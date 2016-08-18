@@ -19,10 +19,22 @@
   transition-duration: 1s;
 }
 
-.secondaryDetails {
+.secondary-details-container {
   height: 100%;
+  width: 325px;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+}
+
+.secondaryDetails {
+  position: absolute;
+  top: 50%;
+  margin: -25px 0 0 20px;
+}
+
+.secondaryDetails .place-address {
+  margin-top: 10px;
 }
 
 .thumbnailContainer {

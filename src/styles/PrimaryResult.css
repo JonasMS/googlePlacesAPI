@@ -21,6 +21,15 @@
   width: 100%;
 }
 
+.primaryDetails.place-name {
+  font-size: 24px
+}
+
+.primaryDetails.place-address {
+  font-size: 14px;
+  margin-top: 5px
+}
+
 .details-left {
   float: left;
   width: 80%
@@ -33,15 +42,6 @@
 .details-right {
   float: right;
   width: 20%
-}
-
-.place-name {
-  font-size: 24px
-}
-
-.place-address {
-  font-size: 14px;
-  margin-top: 5px
 }
 
 .info-open {
