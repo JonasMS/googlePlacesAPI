@@ -7,8 +7,7 @@ import {
   QUERY_IN,
   QUERY_OUT,
 } from '../constants';
-import { addMarker, removeMarkers, panToPlace } from '../modules/mapsAPI';
-import { focusSelected } from '../modules/utils';
+import { addMarker, removeMarkers, panToPlace } from '../modules/';
 import '../styles/App.css';
 
 class App extends Component {

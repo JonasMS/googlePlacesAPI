@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/SecondaryResult.css';
-import { handlePlaceClick } from '../modules/mapsAPI';
+import { handlePlaceClick } from '../modules/';
 
 // thumbnail img on left
 // name
