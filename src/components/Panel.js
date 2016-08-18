@@ -5,29 +5,32 @@ import SecondaryResult from './SecondaryResult';
 import { RESULTS, PANEL_IN, PANEL_OUT } from '../constants';
 import '../styles/Panel.css';
 
-const createSecondaries = (context, results) => (
+const createSecondaries = (app, results) => (
   results.map((place, key) => <SecondaryResult
       place={place}
-      context={context}
+      app={app}
       key={key}
       idx={key}
     />
   )
 );
 
-const Panel = ({updateSearch, handleSearch, closePanel, context, state}) => (
-  <div className={`panel ${(state.display === RESULTS) ? PANEL_IN : PANEL_OUT}`} >
+const Panel = ({app}) => (
+  <div className={`panel ${(app.state.display === RESULTS) ? PANEL_IN : PANEL_OUT}`} >
+
     <QueryBox
-      updateSearch={updateSearch}
-      app={context}
+      updateSearch={app.updateSearch}
+      app={app}
     />
+
     <div className="results">
-      {state.places.length && <PrimaryResult place={state.places[0]} />}
+      {app.state.places.length && <PrimaryResult place={app.state.places[0]} />}
       {
-        state.places.length > 1 &&
-        createSecondaries(context, state.places.slice(1, 5))
+        app.state.places.length > 1 &&
+        createSecondaries(app, app.state.places.slice(1, 5))
       }
     </div>
+
   </div>
 );
 

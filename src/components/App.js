@@ -23,8 +23,6 @@ class App extends Component {
       map: null,
     }
 
-    this.searchNearby = this.searchNearby.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.closePanel = this.closePanel.bind(this);
     this.queryInput = null;
@@ -56,43 +54,6 @@ class App extends Component {
     this.setState({map: map});
   }
 
-  searchNearby(options, callback) {
-    const service = new google.maps.places.PlacesService(this.state.map);
-    service.nearbySearch(options, callback);
-  }
-
-  handleSearch(name = this.state.search) {
-    console.log(name);
-    if (this.state.search.length) {
-      // match panelInput to queryInput
-      this.panelInput.value = this.state.search;
-      this.setState({display: RESULTS});
-      removeMarkers(this);
-
-      // execute search
-      // place a marker for each search result
-      this.searchNearby({
-        name,
-        location: this.state.location,
-        radius: 500,
-        },
-        (results, status) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            console.log('results: ', results);
-            const places = results.map(result => ({
-                          marker: addMarker(this, result),
-                          info: result,
-                      }));
-            panToPlace(this, places[0].info);
-            this.setState({places});
-            return;
-          }
-          console.log(status);
-          throw new Error(status); // TODO: verify that is correct
-      });
-    }
-  }
-
   updateSearch(e) {
     const search = e.target.value;
     this.setState({search});
@@ -111,22 +72,20 @@ class App extends Component {
     console.log('state: ', this.state);
     return (
       <div className="App">
+
         <div className="mapContainer">
           <div className="map"></div>
         </div>
+
         <div className={this.state.display === SEARCH ? QUERY_IN : QUERY_OUT }>
           <QueryBox
             updateSearch={this.updateSearch}
             app={this}
           />
         </div>
-        <Panel
-          updateSearch={this.updateSearch}
-          handleSearch={this.handleSearch}
-          closePanel={this.closePanel}
-          context={this}
-          state={this.state}
-        />
+
+        <Panel app={this} />
+
       </div>
     );
   }

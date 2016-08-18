@@ -29,4 +29,3 @@ export const searchNearby = (app, options, callback) => {
     const service = new google.maps.places.PlacesService(app.state.map);
     service.nearbySearch(options, callback);
 }
-

@@ -2,16 +2,11 @@ import React from 'react';
 import '../styles/SecondaryResult.css';
 import { handlePlaceClick } from '../modules/';
 
-// thumbnail img on left
-// name
-// address
-// isOpen?
-
-const SecondaryResult = ({context, place, idx}) => (
+const SecondaryResult = ({app, place, idx}) => (
   <div className="secondaryResult">
     <div
       className="slideoutContainer"
-      onClick={() => handlePlaceClick(context, idx + 1) }
+      onClick={() => handlePlaceClick(app, idx + 1) }
     >
 
       <div className="thumbnailContainer">
