@@ -49,4 +49,3 @@ export const handleSearch = (app, name = app.state.search) => {
     });
   }
 }
-

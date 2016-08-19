@@ -27,7 +27,7 @@ const Panel = ({app}) => (
       {app.state.places.length && <PrimaryResult place={app.state.places[0]} />}
       {
         app.state.places.length > 1 &&
-        createSecondaries(app, app.state.places.slice(1, 5))
+        createSecondaries(app, app.state.places.slice(1))
       }
     </div>
 

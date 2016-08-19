@@ -1,11 +1,18 @@
 import React from 'react';
 // import OpenStatus from './OpenStatus';
+import { placeholderImgUrl, primaryPhotoOptions } from '../constants';
 import '../styles/PrimaryResult.css';
 
 const PrimaryResult = ({place}) => (
   <div className="primaryResult">
     <div className="image-container">
-      <img src={place.info.photos[0].getUrl({maxWidth: 400})} className="primaryPhoto" alt="result" />
+      <img
+        src={
+          place.info.photos ?
+            place.info.photos[0].getUrl(primaryPhotoOptions) : placeholderImgUrl
+        }
+        className="primaryPhoto" alt="result"
+      />
     </div>
     <div className="primary-details-container">
       <div className="primaryDetails">

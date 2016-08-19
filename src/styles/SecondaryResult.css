@@ -1,5 +1,6 @@
 .secondaryResult {
   height: 100px;
+  background-color: white;
   border-bottom: 1px solid #E6E6E6;
 }
 
@@ -7,16 +8,15 @@
   width: 100%;
   height: 100px;
   background-color: white;
+  border-bottom: 1px solid #E6E6E6;
 }
 
 .slideoutContainer:hover {
-  left: 20px;
+
+  left: 6px;
   position: absolute;
-  box-shadow: 0 1px 2px #aaa;
-  -webkit-transition-property: left;
-  -webkit-transition-duration: 1s;
-  transition-property: left;
-  transition-duration: 1s;
+  box-shadow: -4px 4px 5px #aaa;
+  z-index: 500;
 }
 
 .secondary-details-container {
@@ -27,13 +27,19 @@
   position: relative;
 }
 
+
 .secondaryDetails {
   position: absolute;
   top: 50%;
   margin: -25px 0 0 20px;
 }
 
+.secondaryDetails .place-name {
+  font-size: 18px;
+}
+
 .secondaryDetails .place-address {
+  font-size: 14px;
   margin-top: 10px;
 }
 
@@ -42,4 +48,15 @@
   height: 100%;
   overflow: hidden;
   display: inline-block;
+  position: relative;
+}
+
+.thumbnailContainer img {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }

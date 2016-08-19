@@ -1,5 +1,7 @@
 .primaryPhoto {
   vertical-align: top;
+  min-width: 400px;
+  min-height: 300px;
 }
 
 .image-container {
@@ -7,7 +9,6 @@
   max-height: 300px;
   width: 100%;
 }
-
 
 .primary-details-container {
   width: 100%;
@@ -21,12 +22,12 @@
   width: 100%;
 }
 
-.primaryDetails.place-name {
+.primaryDetails .place-name {
   font-size: 24px
 }
 
-.primaryDetails.place-address {
-  font-size: 14px;
+.primaryDetails .place-address {
+  font-size: 16px;
   margin-top: 5px
 }
 
