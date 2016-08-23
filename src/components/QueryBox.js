@@ -1,6 +1,6 @@
 import React from 'react';
 import { handleSearch } from '../modules/'
-import '../styles/QueryBox.css';
+import '../styles/Searchbox.scss';
 
 const QueryBox = ({ app, updateSearch, close, active, alt }) => (
   <div className="searchbox">

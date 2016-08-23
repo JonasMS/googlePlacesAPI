@@ -1,26 +1,27 @@
 import React from 'react';
 import { handlePlaceClick } from '../modules/';
 import { placeholderImgUrl, thumbnailPhotoOptions } from '../constants';
-import '../styles/SecondaryResult.css';
+import '../styles/SecondaryResult.scss';
 
 const SecondaryResult = ({app, place, idx}) => (
-    <div className="secondaryResult">
+    <div className="secondary-result">
       <div
-        className="slideoutContainer"
+        className="slideout-container"
         onClick={() => handlePlaceClick(app, idx + 1) }
       >
 
-        <div className="thumbnailContainer">
+        <div className="thumbnail-container">
           <img
+            alt="result"
             src={
               place.info.photos ?
                 place.info.photos[0].getUrl(thumbnailPhotoOptions) : placeholderImgUrl
             }
-            className="thumbnailImg" alt="result"
           />
         </div>
+
         <div className="secondary-details-container">
-          <div className="secondaryDetails">
+          <div className="secondary-details">
             <div className="place-name">{place.info.name}</div>
             <div className="place-address">{place.info.vicinity}</div>
           </div>

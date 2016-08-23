@@ -1,0 +1,67 @@
+
+.image-container {
+  overflow: hidden;
+  max-height: 300px;
+  width: 100%;
+
+  .primary-photo {
+    vertical-align: top;
+    min-width: 400px;
+    min-height: 300px;
+  }
+}
+
+.primary-details-container {
+  width: 100%;
+  padding: 20px 0;
+  display: inline-block;
+  background-color: #4885ed;
+  color: white;
+
+  .primary-details {
+    width: 100%;
+
+    .details-left {
+      float: left;
+      width: 80%;
+
+      div {
+        margin-left: 20px;
+      }
+    }
+
+    .place-name {
+      font-size: 24px;
+    }
+
+    .place-address {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    .details-right {
+      float: right;
+      width: 20%;
+    }
+
+    .info-open {
+      display: inline-block;
+      padding: 5px;
+      border: 1px solid;
+      border-radius: 3px;
+      font-size: 14px;
+
+      &.open {
+        color: #3cba54;
+      }
+
+      &.closed {
+        color: #db3236;
+      }
+    }
+  }
+}
+
+
+
+

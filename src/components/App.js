@@ -10,7 +10,7 @@ import {
   removeMarkers,
   panToPlace
 } from '../modules/';
-import '../styles/App.css';
+import '../styles/App.scss';
 
 class App extends Component {
   constructor() {
