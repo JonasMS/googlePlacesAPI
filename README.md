@@ -4,6 +4,8 @@
 Make of copy of the '.env_example' file named '.env'.
 
 '.env' should look like so:
+|Variable|Setting|
+|---|---|
 | GOOGLE_API_ID | [Your Google Maps API Key] |
 
 Then in terminal run the following:
