@@ -17,6 +17,7 @@ $ npm run build
 # to build the app on every change to any file
 $npm run build-dev
 ```
+Run index.html in your browser.
 
 ## Use
 If you want to play around with the app check out the following suggested search queries:
@@ -28,3 +29,6 @@ If you want to play around with the app check out the following suggested search
 * React
 * Webpack
 * Sass
+
+## Note
+The commit history is brief because I started the project with react-app, a new CLI tool for quickly setting up react apps, and then copied the 'src' directory into a new project with a build process made from scratch.
