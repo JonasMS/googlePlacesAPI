@@ -1,0 +1,39 @@
+.panel {
+  top: 0;
+  height: 100%;
+  width: 425px;
+  position: absolute;
+  background-color: white;
+  z-index: 100;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow-y: scroll;
+
+  .no-results-error {
+    width: 70%;
+    margin: 50% auto;
+    font-size: 16px;
+  }
+
+  /*
+  Transitions
+  */
+  &.panel-in {
+    left: 0px;
+    -webkit-transition-property: left;
+    -webkit-transition-duration: 0.5s;
+    transition-property: left;
+    transition-duration: 0.5s;
+  }
+
+  &.panel-out {
+    left: -425px;
+    -webkit-transition-property: left;
+    -webkit-transition-duration: 0.5s;
+    transition-property: left;
+    transition-duration: 0.5s;
+  }
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}

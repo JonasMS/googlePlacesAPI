@@ -1,0 +1,33 @@
+.mapContainer {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+    .map {
+      height: 100%
+    }
+}
+
+
+.btn {
+  display: inline-block;
+  height: 30px;
+  width: 50px;
+  border-radius: 3px;
+  border: 1px;
+  background-color: rgba(72, 133, 237, .5);
+  /* box-shadow: none; */
+  color: white;
+  font-size: 12px;
+
+  &:hover {
+    background-color: rgba(72, 133, 237, 1);
+  }
+
+  &-disabled {
+    background-color: gray;
+    border-color: gray;
+  }
+}

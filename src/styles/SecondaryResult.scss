@@ -1,0 +1,60 @@
+.secondary-result {
+  height: 100px;
+  background-color: white;
+  border-bottom: 1px solid #E6E6E6;
+
+  .slideout-container {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border-bottom: 1px solid #E6E6E6;
+
+    &:hover {
+      left: 6px;
+      position: absolute;
+      box-shadow: -4px 4px 5px #aaa;
+      z-index: 500;
+    }
+  }
+
+  .thumbnail-container {
+    width: 75px;
+    height: 100%;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+
+    & img {
+      min-width: 100%;
+      min-height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .secondary-details-container {
+    height: 100%;
+    width: 325px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+  }
+
+  .secondary-details {
+    position: absolute;
+    top: 50%;
+    margin: -25px 0 0 20px;
+
+    .place-name {
+      font-size: 18px;
+    }
+
+    .place-address {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,9 +1,8 @@
 import React from 'react';
-import QueryBox from './QueryBox';
 import PrimaryResult from './PrimaryResult';
 import SecondaryResult from './SecondaryResult';
 import { RESULTS, PANEL_IN, PANEL_OUT } from '../constants';
-import '../styles/Panel.css';
+import '../styles/Panel.scss';
 
 const createSecondaries = (app, results) => (
   results.map((place, key) => <SecondaryResult
@@ -20,7 +19,10 @@ const Panel = ({app}) => (
     <div className="results">
       {
         app.state.places.length ?
-          <PrimaryResult place={app.state.places[0]} /> : ''
+          <PrimaryResult place={app.state.places[0]} /> :
+          <div className="no-results-error">
+            Yikes, your search didn't bring up any results!
+          </div>
       }
       {
         app.state.places.length > 1 ?

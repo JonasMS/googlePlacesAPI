@@ -4,7 +4,7 @@ var PATHS = {
   app: path.join(__dirname, 'src'),
   build: path.join(__dirname, 'build')
 };
-// require('dotenv').config({ silent: true });
+require('dotenv').config({ silent: true });
 
 module.exports = {
   entry: {
@@ -24,10 +24,6 @@ module.exports = {
         query: { presets:['react', 'es2015'] }
       },
       {
-        test: /\.png$/,
-        loader: 'url-loader?limit=100000',
-      },
-      {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
       },
@@ -35,11 +31,9 @@ module.exports = {
         test: /\.css$/,
         loaders: ['style', 'css']
       },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      }
     ]
   },
-  plugins: []
+plugins: [
+    new webpack.EnvironmentPlugin(['GOOGLE_API_ID']),
+  ]
 };

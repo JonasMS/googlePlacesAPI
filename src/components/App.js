@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import QueryBox from './QueryBox';
+import Searchbox from './Searchbox';
 import Panel from './Panel';
+import { SEARCH, RESULTS } from '../constants';
 import {
-  SEARCH,
-  RESULTS,
-  QUERY_IN,
-  QUERY_OUT,
-} from '../constants';
-import { addMarker, removeMarkers, panToPlace } from '../modules/';
-import '../styles/App.css';
+  addMap,
+  initMap,
+  initAutocomplete,
+  addMarker,
+  removeMarkers,
+  panToPlace
+} from '../modules/';
+import '../styles/App.scss';
 
 class App extends Component {
   constructor() {
@@ -31,24 +33,11 @@ class App extends Component {
   componentDidMount() {
     this.searchbox = document.querySelector('input');
 
-    // init map
-    const map = new google.maps.Map(document.querySelector('.map'), {
-      center: this.state.location,
-      zoom: 16,
-      scrollwheel: true,
+    addMap(document.head, () => {
+      const map = initMap(this, document.querySelector('.map'));
+      initAutocomplete(this, this.searchbox, map);
+      this.setState({map: map});
     });
-
-    // init autocomplete
-
-    let autocomplete = new google.maps.places.Autocomplete(this.searchbox);
-    autocomplete.bindTo('bounds', map);
-
-    // update state on autocomplete invocation
-    google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
-      this.setState({search: this.searchbox.value});
-    });
-
-    this.setState({map: map});
   }
 
   updateSearch(e) {
@@ -72,13 +61,15 @@ class App extends Component {
         <div className="mapContainer">
           <div className="map"></div>
         </div>
-        <QueryBox
+
+        <Searchbox
           app={this}
           updateSearch={this.updateSearch}
           close={this.closePanel}
           active={!!this.state.search.length}
           alt={this.state.display === RESULTS}
         />
+
         <Panel app={this} />
 
       </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { handleSearch } from '../modules/'
-import '../styles/QueryBox.css';
+import '../styles/Searchbox.scss';
 
-const QueryBox = ({ app, updateSearch, close, active, alt }) => (
+const Searchbox = ({ app, updateSearch, close, active, alt }) => (
   <div className="searchbox">
       <input
         className={`input-search ${active ? 'search-active' : ''}`}
@@ -30,4 +30,4 @@ const QueryBox = ({ app, updateSearch, close, active, alt }) => (
   </div>
 );
 
-export default QueryBox;
+export default Searchbox;

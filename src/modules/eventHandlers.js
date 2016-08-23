@@ -44,6 +44,6 @@ export const handleSearch = (app, name = app.state.search) => {
         app.setState({places});
         return;
       }
-      throw new Error(status); // TODO: verify that is correct
+      throw new Error(status);
   });
 }
