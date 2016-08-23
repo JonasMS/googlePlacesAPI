@@ -3,7 +3,7 @@ import QueryBox from './QueryBox';
 import PrimaryResult from './PrimaryResult';
 import SecondaryResult from './SecondaryResult';
 import { RESULTS, PANEL_IN, PANEL_OUT } from '../constants';
-import '../styles/Panel.css';
+import '../styles/Panel.scss';
 
 const createSecondaries = (app, results) => (
   results.map((place, key) => <SecondaryResult
