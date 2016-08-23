@@ -11,18 +11,16 @@ export const addMap = (node, callback) => {
   node.appendChild(map_js);
 };
 
-export const initMap = (app, node) => {
- const map = new google.maps.Map(
+export const initMap = (app, node) => (
+  new google.maps.Map(
     node,
     {
       center: app.state.location,
       zoom: 16,
       scrollwheel: true,
     }
-  );
- const bounds = map.getBounds();
- return { map, bounds };
-};
+  )
+);
 
 export const initAutocomplete = (app, inputNode, map, bounds) => {
   let autocomplete = new google.maps.places.Autocomplete(inputNode);

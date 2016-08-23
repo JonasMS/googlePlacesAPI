@@ -21,7 +21,6 @@ class App extends Component {
       markers: [],
       places: [],
       display: SEARCH,
-      bounds: null,
       map: null,
     }
 
@@ -34,9 +33,9 @@ class App extends Component {
     this.searchbox = document.querySelector('input');
 
     addMap(document.head, () => {
-      const { map, bounds } = initMap(this, document.querySelector('.map'));
+      const map = initMap(this, document.querySelector('.map'));
       initAutocomplete(this, this.searchbox, map, bounds);
-      this.setState({map, bounds});
+      this.setState({map});
     });
   }
 
