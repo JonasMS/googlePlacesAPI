@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import QueryBox from './QueryBox';
 import Panel from './Panel';
+import { SEARCH, RESULTS, QUERY_IN, QUERY_OUT } from '../constants';
 import {
-  SEARCH,
-  RESULTS,
-  QUERY_IN,
-  QUERY_OUT,
-} from '../constants';
-import { addMap, initMap, initAutocomplete, addMarker, removeMarkers, panToPlace } from '../modules/';
+  addMap,
+  initMap,
+  initAutocomplete,
+  addMarker,
+  removeMarkers,
+  panToPlace
+} from '../modules/';
 import '../styles/App.css';
 
 class App extends Component {
@@ -28,12 +30,6 @@ class App extends Component {
     this.searchbox = null;
   }
 
-  componentWillMount() {
-    // addMap(document.head, () => {
-    //   initMap(document.querySelector('.map'));
-    // });
-  }
-
   componentDidMount() {
     this.searchbox = document.querySelector('input');
 
@@ -42,26 +38,6 @@ class App extends Component {
       initAutocomplete(this, this.searchbox, map);
       this.setState({map: map});
     });
-
-
-    // init map
-    // const map = new google.maps.Map(document.querySelector('.map'), {
-    //   center: this.state.location,
-    //   zoom: 16,
-    //   scrollwheel: true,
-    // });
-
-    // // init autocomplete
-
-    // let autocomplete = new google.maps.places.Autocomplete(this.searchbox);
-    // autocomplete.bindTo('bounds', map);
-
-    // // update state on autocomplete invocation
-    // google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
-    //   this.setState({search: this.searchbox.value});
-    // });
-
-    // this.setState({map: map});
   }
 
   updateSearch(e) {

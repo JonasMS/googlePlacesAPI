@@ -24,10 +24,6 @@ module.exports = {
         query: { presets:['react', 'es2015'] }
       },
       {
-        test: /\.png$/,
-        loader: 'url-loader?limit=100000',
-      },
-      {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
       },
@@ -35,10 +31,6 @@ module.exports = {
         test: /\.css$/,
         loaders: ['style', 'css']
       },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      }
     ]
   },
 plugins: [
