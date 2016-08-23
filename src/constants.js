@@ -4,9 +4,6 @@ export const RESULTS = 'results';
 export const PANEL_IN = 'panel-in';
 export const PANEL_OUT = 'panel-out';
 
-export const QUERY_IN = 'query_in';
-export const QUERY_OUT = 'query_out';
-
 export const placeholderImgUrl = 'http://cdn.slidesharecdn.com/profile-photo-Zenefits-96x96.jpg?cb=1457381545';
 
 export const primaryPhotoOptions = {

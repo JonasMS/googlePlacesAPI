@@ -8,6 +8,12 @@
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   overflow-y: scroll;
 
+  .no-results-error {
+    width: 70%;
+    margin: 50% auto;
+    font-size: 16px;
+  }
+
   /*
   Transitions
   */

@@ -31,26 +31,3 @@
     border-color: gray;
   }
 }
-
-/*
-Transitions
-*/
-.query_in {
-  top: 50px;
-  left: 10px;
-  position: absolute;
-  -webkit-transition-property: left;
-  -webkit-transition-duration: 1s;
-  transition-property: left;
-  transition-duration: 1s;
-}
-
-.query_out {
-  top: 40px;
-  left: -400px;
-  position: absolute;
-  -webkit-transition-property: left;
-  -webkit-transition-duration: 1s;
-  transition-property: left;
-  transition-duration: 1s;
-}

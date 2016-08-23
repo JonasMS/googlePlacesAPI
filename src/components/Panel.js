@@ -19,7 +19,10 @@ const Panel = ({app}) => (
     <div className="results">
       {
         app.state.places.length ?
-          <PrimaryResult place={app.state.places[0]} /> : ''
+          <PrimaryResult place={app.state.places[0]} /> :
+          <div className="no-results-error">
+            Yikes, your search didn't bring up any results!
+          </div>
       }
       {
         app.state.places.length > 1 ?

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Searchbox from './Searchbox';
 import Panel from './Panel';
-import { SEARCH, RESULTS, QUERY_IN, QUERY_OUT } from '../constants';
+import { SEARCH, RESULTS } from '../constants';
 import {
   addMap,
   initMap,
@@ -61,6 +61,7 @@ class App extends Component {
         <div className="mapContainer">
           <div className="map"></div>
         </div>
+
         <Searchbox
           app={this}
           updateSearch={this.updateSearch}
@@ -68,6 +69,7 @@ class App extends Component {
           active={!!this.state.search.length}
           alt={this.state.display === RESULTS}
         />
+
         <Panel app={this} />
 
       </div>
