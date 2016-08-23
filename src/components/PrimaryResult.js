@@ -3,6 +3,14 @@ import React from 'react';
 import { placeholderImgUrl, primaryPhotoOptions } from '../constants';
 import '../styles/PrimaryResult.scss';
 
+const renderOpenStatus = place => (
+  place.info.opening_hours.open_now ?
+    <div className='info-open open'>Open</div>
+    :
+    <div className="info-open closed">Closed</div>
+)
+
+
 const PrimaryResult = ({place}) => (
   <div className="primary-result">
     <div className="image-container">
@@ -24,9 +32,7 @@ const PrimaryResult = ({place}) => (
 
         <div className="details-right">
           {
-            place.info.opening_hours.open_now ?
-              <div className='info-open open'>Open</div> :
-              <div className="info-open closed">Closed</div>
+            place.info.opening_hours ? renderOpenStatus(place) : ''
           }
         </div>
 

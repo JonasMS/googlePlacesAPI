@@ -24,7 +24,6 @@ export const handleMarkerClick = (app, marker) => {
 
 export const handleSearch = (app, name = app.state.search) => {
   // match panelInput to queryInput
-  // app.panelInput.value = app.state.search; // TODO: remove
   app.setState({display: RESULTS});
   if (app.state.places.length) { removeMarkers(app); }
 
