@@ -4,7 +4,7 @@ var PATHS = {
   app: path.join(__dirname, 'src'),
   build: path.join(__dirname, 'build')
 };
-// require('dotenv').config({ silent: true });
+require('dotenv').config({ silent: true });
 
 module.exports = {
   entry: {
@@ -41,5 +41,7 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+plugins: [
+    new webpack.EnvironmentPlugin(['GOOGLE_API_ID']),
+  ]
 };

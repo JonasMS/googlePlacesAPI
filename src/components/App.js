@@ -7,7 +7,7 @@ import {
   QUERY_IN,
   QUERY_OUT,
 } from '../constants';
-import { addMarker, removeMarkers, panToPlace } from '../modules/';
+import { addMap, initMap, initAutocomplete, addMarker, removeMarkers, panToPlace } from '../modules/';
 import '../styles/App.css';
 
 class App extends Component {
@@ -28,27 +28,40 @@ class App extends Component {
     this.searchbox = null;
   }
 
+  componentWillMount() {
+    // addMap(document.head, () => {
+    //   initMap(document.querySelector('.map'));
+    // });
+  }
+
   componentDidMount() {
     this.searchbox = document.querySelector('input');
 
+    addMap(document.head, () => {
+      const map = initMap(this, document.querySelector('.map'));
+      initAutocomplete(this, this.searchbox, map);
+      this.setState({map: map});
+    });
+
+
     // init map
-    const map = new google.maps.Map(document.querySelector('.map'), {
-      center: this.state.location,
-      zoom: 16,
-      scrollwheel: true,
-    });
+    // const map = new google.maps.Map(document.querySelector('.map'), {
+    //   center: this.state.location,
+    //   zoom: 16,
+    //   scrollwheel: true,
+    // });
 
-    // init autocomplete
+    // // init autocomplete
 
-    let autocomplete = new google.maps.places.Autocomplete(this.searchbox);
-    autocomplete.bindTo('bounds', map);
+    // let autocomplete = new google.maps.places.Autocomplete(this.searchbox);
+    // autocomplete.bindTo('bounds', map);
 
-    // update state on autocomplete invocation
-    google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
-      this.setState({search: this.searchbox.value});
-    });
+    // // update state on autocomplete invocation
+    // google.maps.event.addDomListener(autocomplete, 'place_changed', () => {
+    //   this.setState({search: this.searchbox.value});
+    // });
 
-    this.setState({map: map});
+    // this.setState({map: map});
   }
 
   updateSearch(e) {
