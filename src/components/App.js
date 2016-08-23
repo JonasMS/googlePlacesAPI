@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import QueryBox from './QueryBox';
+import Searchbox from './Searchbox';
 import Panel from './Panel';
 import { SEARCH, RESULTS, QUERY_IN, QUERY_OUT } from '../constants';
 import {
@@ -61,7 +61,7 @@ class App extends Component {
         <div className="mapContainer">
           <div className="map"></div>
         </div>
-        <QueryBox
+        <Searchbox
           app={this}
           updateSearch={this.updateSearch}
           close={this.closePanel}

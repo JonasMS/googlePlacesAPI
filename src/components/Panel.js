@@ -1,5 +1,4 @@
 import React from 'react';
-import QueryBox from './QueryBox';
 import PrimaryResult from './PrimaryResult';
 import SecondaryResult from './SecondaryResult';
 import { RESULTS, PANEL_IN, PANEL_OUT } from '../constants';
