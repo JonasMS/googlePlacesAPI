@@ -18,6 +18,12 @@ $ npm run build
 $npm run build-dev
 ```
 
+## Use
+If you want to play around with the app check out the following suggested search queries:
+* "peet's"
+* "bar"
+* "restaurant"
+
 ## Tech Stack
 * React
 * Webpack
