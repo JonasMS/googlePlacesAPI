@@ -1,0 +1,67 @@
+.mapContainer {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.map {
+  height: 100%
+}
+
+.btn {
+  display: inline-block;
+  height: 30px;
+  width: 50px;
+  border-radius: 3px;
+  border: 1px;
+  background-color: rgba(72, 133, 237, .5);
+  /* box-shadow: none; */
+  color: white;
+  font-size: 12px;
+}
+
+.btn:hover {
+  background-color: rgba(72, 133, 237, 1);
+}
+
+.btn-disabled {
+  background-color: gray;
+  border-color: gray;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.icon-app {
+  color: #4885ed;
+}
+
+.icon-disabled {
+  color: gray;
+}
+
+/*
+Transitions
+*/
+.query_in {
+  top: 50px;
+  left: 10px;
+  position: absolute;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+}
+
+.query_out {
+  top: 40px;
+  left: -400px;
+  position: absolute;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+  transition-property: left;
+  transition-duration: 1s;
+}

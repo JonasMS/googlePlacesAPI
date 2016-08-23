@@ -1,0 +1,63 @@
+.primaryPhoto {
+  vertical-align: top;
+  min-width: 400px;
+  min-height: 300px;
+}
+
+.image-container {
+  overflow: hidden;
+  max-height: 300px;
+  width: 100%;
+}
+
+.primary-details-container {
+  width: 100%;
+  padding: 20px 0;
+  display: inline-block;
+  background-color: #4885ed;
+  color: white;
+}
+
+.primaryDetails {
+  width: 100%;
+}
+
+.primaryDetails .place-name {
+  font-size: 24px
+}
+
+.primaryDetails .place-address {
+  font-size: 16px;
+  margin-top: 5px
+}
+
+.details-left {
+  float: left;
+  width: 80%
+}
+
+.details-left div {
+  margin-left: 20px;
+}
+
+.details-right {
+  float: right;
+  width: 20%
+}
+
+.info-open {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.info-open.open {
+  color: #3cba54;
+}
+
+.info-open.closed {
+  color: #db3236;
+}
+
