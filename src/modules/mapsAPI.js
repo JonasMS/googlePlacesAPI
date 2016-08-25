@@ -22,7 +22,7 @@ export const initMap = (app, node) => (
   )
 );
 
-export const initAutocomplete = (app, inputNode, map, bounds) => {
+export const initAutocomplete = (app, inputNode, map) => {
   let autocomplete = new google.maps.places.Autocomplete(inputNode);
   autocomplete.bindTo('bounds', map);
 
@@ -33,7 +33,7 @@ export const initAutocomplete = (app, inputNode, map, bounds) => {
 
   // update search bounds and location on bounds (viewport) change
   google.maps.event.addDomListener(map, 'bounds_changed', () => {
-    const loc = map.getBounds().getCenter;
+    const loc = map.getBounds().getCenter();
     app.setState({location: { lat: loc.lat(), lng: loc.lng() }});
     autocomplete.bindTo('bounds', map);
 
@@ -59,8 +59,8 @@ export const removeMarkers = (app) => {
 };
 
 export const panToPlace = (app, place) => {
-  const { loc } = place.geometry;
-  app.state.map.panTo({lat: loc.lat(), lng: loc.lng()});
+  const { location } = place.geometry;
+  app.state.map.panTo({lat: location.lat(), lng: location.lng()});
 };
 
 export const searchNearby = (app, options, callback) => {

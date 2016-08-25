@@ -34,7 +34,6 @@ export const handleSearch = (app, name = app.state.search) => {
     { name, location: app.state.location, radius: 500 },
     (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log('results: ', results);
         const places = results.map(result => ({
                       marker: addMarker(app, result),
                       info: result,

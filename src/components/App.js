@@ -34,7 +34,7 @@ class App extends Component {
 
     addMap(document.head, () => {
       const map = initMap(this, document.querySelector('.map'));
-      initAutocomplete(this, this.searchbox, map, bounds);
+      initAutocomplete(this, this.searchbox, map);
       this.setState({map});
     });
   }
